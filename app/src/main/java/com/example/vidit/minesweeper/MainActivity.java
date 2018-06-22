@@ -459,6 +459,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             easy=true;
             setupMines();
             updateNeighbours();
+            firstClick=true;
         }
         else if(id==R.id.easy)
         {
@@ -468,6 +469,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             easy=true;
             medium=false;
             hard=false;
+            firstClick=true;
             setupMines();
             updateNeighbours();
         }
@@ -479,6 +481,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             easy=false;
             medium=true;
             hard=false;
+            firstClick=true;
             setupMines();
             updateNeighbours();
         }
@@ -490,6 +493,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             easy=false;
             medium=false;
             hard=true;
+            firstClick=true;
             setupMines();
             updateNeighbours();
         }
