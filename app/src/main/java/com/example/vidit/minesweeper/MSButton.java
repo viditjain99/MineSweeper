@@ -28,6 +28,13 @@ public class MSButton extends AppCompatButton
         nearbyMines++;
         //setText(String.valueOf(nearbyMines));
     }
+    public void toggleStatus()
+    {
+        if(isAMine==true)
+        {
+            isAMine=false;
+        }
+    }
     public void showButton()
     {
         setText(String.valueOf(nearbyMines));
@@ -69,7 +76,7 @@ public class MSButton extends AppCompatButton
     {
         setClickable(false);
         flag=true;
-        setText("F");
+        //setText("F");
         //setBackground("@mipmap/ic_action_flag");
         setTextColor(Color.RED);
     }

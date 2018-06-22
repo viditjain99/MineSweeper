@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public int checked=0;
     public int r;
     public ArrayList<LinearLayout> rows;
+    public boolean firstClick=true;
     public MSButton[][] board;
     public boolean easy,medium,hard;
 
@@ -500,6 +501,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(gameStatus==incomplete)
         {
             MSButton button=(MSButton) view;
+            if(firstClick==true)
+            {
+                int x_coord=0,y_coord=0;
+                if(button.status()==true)
+                {
+                    button.toggleStatus();
+                }
+                for(int i=0;i<SIZE;i++)
+                {
+                    for(int j=0;j<SIZE;j++)
+                    {
+                        if(button==board[i][j])
+                        {
+                           x_coord=i;
+                           y_coord=j;
+                        }
+                    }
+                }
+                firstClick=false;
+                int num=1;
+                int mines=0;
+                Random random=new Random();
+                while(mines<num)
+                {
+                    int x=random.nextInt(SIZE);
+                    int y=random.nextInt(SIZE);
+                    if(board[x][y].status()==false && (x!=x_coord || y!=y_coord))
+                    {
+                        board[x][y].setAsMine();
+                        mines++;
+                    }
+                }
+                updateNeighbours();
+            }
             int x=0,y=0;
             for(int i=0;i<SIZE;i++)
             {
