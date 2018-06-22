@@ -17,7 +17,7 @@ public class MSButton extends AppCompatButton
     public void setAsMine()
     {
         isAMine=true;
-        setText("M");
+        //setText("M");
     }
     public boolean status()
     {
