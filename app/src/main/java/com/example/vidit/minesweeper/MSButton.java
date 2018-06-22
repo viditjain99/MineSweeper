@@ -43,26 +43,31 @@ public class MSButton extends AppCompatButton
     {
         setText(String.valueOf(nearbyMines));
         revealed=true;
-        setBackgroundColor(Color.parseColor("#808080"));
+        setBackgroundColor(Color.parseColor("#B1B5B5"));
         if(getText().toString()=="0")
         {
             setTextColor(Color.YELLOW);
+            setTextSize(25);
         }
         else if(getText().toString()=="1")
         {
             setTextColor(Color.BLUE);
+            setTextSize(25);
         }
         else if(getText().toString()=="2")
         {
             setTextColor(Color.GREEN);
+            setTextSize(25);
         }
         else if(getText().toString()=="3")
         {
             setTextColor(Color.RED);
+            setTextSize(25);
         }
         else
         {
             setTextColor(Color.parseColor("#000080"));
+            setTextSize(25);
         }
         setEnabled(false);
     }
@@ -81,6 +86,7 @@ public class MSButton extends AppCompatButton
         setClickable(false);
         flag=true;
         setText("F");
+        setTextSize(25);
         setTextColor(Color.RED);
     }
     public boolean isFlag()

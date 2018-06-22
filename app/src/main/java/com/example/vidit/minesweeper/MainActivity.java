@@ -1,14 +1,20 @@
 package com.example.vidit.minesweeper;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,6 +24,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,View.OnLongClickListener
 {
     LinearLayout rootLayout;
+    TextView nameTextView,flagTextView;
     public int SIZE=8;
     public int numberOfMines=10;
     public int gameStatus=-1;
@@ -29,28 +36,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean firstClick=true;
     public MSButton[][] board;
     public boolean easy,medium,hard;
+    public String name=" ";
+    public int flags=0;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent=getIntent();
-        String name=intent.getStringExtra(Startup.NAME_KEY);
+        intent=getIntent();
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#494949")));
+        name=intent.getStringExtra(Startup.NAME_KEY);
+        checked=0;
         int id=intent.getIntExtra("LEVEL",8);
         if(id==R.id.Easy)
         {
             SIZE=8;
             numberOfMines=10;
+            flags=numberOfMines;
         }
         else if(id==R.id.Medium)
         {
             SIZE=9;
             numberOfMines=13;
+            flags=numberOfMines;
         }
         else if(id==R.id.Hard)
         {
             SIZE=10;
             numberOfMines=18;
+            flags=numberOfMines;
         }
         rootLayout=findViewById(R.id.rootLayout);
         setupBoard();
@@ -69,6 +84,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         easy=false;
         medium=false;
         hard=false;
+        LinearLayout infoLayout=new LinearLayout(this);
+        infoLayout.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams infoParams=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,200);
+        infoLayout.setLayoutParams(infoParams);
+        infoLayout.setBackgroundColor(Color.parseColor("#86C9AA"));
+        rootLayout.addView(infoLayout);
+        nameTextView=new TextView(this);
+        flagTextView=new TextView(this);
+        TableRow.LayoutParams params1=new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT,1f);
+        nameTextView.setLayoutParams(params1);
+        nameTextView.setGravity(Gravity.CENTER);
+        TableRow.LayoutParams params2=new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT,1f);
+        flagTextView.setLayoutParams(params2);
+        flagTextView.setGravity(Gravity.CENTER);
+        infoLayout.addView(nameTextView);
+        infoLayout.addView(flagTextView);
+        nameTextView.setText("Player Name: "+name);
+        nameTextView.setTextSize(20);
+        nameTextView.setTextColor(Color.parseColor("#595B5B"));
+        flagTextView.setText("Flags: "+flags);
+        flagTextView.setTextColor(Color.parseColor("#595B5B"));
+        flagTextView.setTextSize(20);
         for(int i=0;i<SIZE;i++)
         {
             LinearLayout linearLayout=new LinearLayout(this);
@@ -583,10 +620,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(button1.isFlag())
         {
             button1.unsetFlag();
+            flags++;
+            flagTextView.setText("Flags: "+String.valueOf(flags));
         }
         else
         {
             button1.setFlag();
+            flags--;
+            flagTextView.setText("Flags: "+String.valueOf(flags));
         }
         return true;
     }

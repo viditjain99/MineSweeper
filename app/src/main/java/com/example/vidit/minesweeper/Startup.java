@@ -1,6 +1,8 @@
 package com.example.vidit.minesweeper;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,6 +25,7 @@ public class Startup extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#494949")));
         button=findViewById(R.id.start);
         editText=findViewById(R.id.nameEditText);
         button.setOnClickListener(this);

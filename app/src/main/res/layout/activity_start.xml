@@ -11,11 +11,12 @@
         android:id="@+id/nameEditText"
         android:layout_marginBottom="50dp"
         android:layout_marginTop="50dp"
-        android:backgroundTint="#303F9F"/>
+        android:backgroundTint="#86C9AA"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Choose Difficulty"
+        android:textColor="#000000"
         android:gravity="center"
         android:textSize="20dp"
         android:layout_marginBottom="15dp"/>
@@ -30,7 +31,7 @@
                 android:text="Easy"
                 android:textSize="20dp"
                 android:checked="false"
-                android:buttonTint="#303F9F"
+                android:buttonTint="#86C9AA"
                 android:layout_weight="1"
                 android:id="@+id/Easy"
                 android:layout_marginLeft="25dp"/>
@@ -41,7 +42,7 @@
                 android:text="Medium"
                 android:textSize="20dp"
                 android:checked="false"
-                android:buttonTint="#303F9F"
+                android:buttonTint="#86C9AA"
                 android:layout_weight="1"
                 android:id="@+id/Medium" />
 
@@ -51,7 +52,7 @@
                 android:text="Hard"
                 android:textSize="20dp"
                 android:checked="false"
-                android:buttonTint="#303F9F"
+                android:buttonTint="#86C9AA"
                 android:layout_weight="1"
                 android:id="@+id/Hard" />
     </RadioGroup>
@@ -62,6 +63,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="200dp"
+        android:backgroundTint="#494949"
+        android:textColor="#FFFFFF"
         android:text="Start Game" />
 
 </LinearLayout>
