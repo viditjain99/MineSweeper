@@ -43,7 +43,7 @@ public class MSButton extends AppCompatButton
     {
         setText(String.valueOf(nearbyMines));
         revealed=true;
-        setBackgroundColor(Color.parseColor("#A8A8A8"));
+        setBackgroundColor(Color.parseColor("#808080"));
         if(getText().toString()=="0")
         {
             setTextColor(Color.YELLOW);
@@ -81,7 +81,6 @@ public class MSButton extends AppCompatButton
         setClickable(false);
         flag=true;
         setText("F");
-        //setBackground("@mipmap/ic_action_flag");
         setTextColor(Color.RED);
     }
     public boolean isFlag()

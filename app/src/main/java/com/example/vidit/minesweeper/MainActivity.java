@@ -341,8 +341,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             {
                 if(board[i][j].status()==true)
                 {
-                    board[i][j].setText("M");
-                    board[i][j].setTextColor(Color.BLACK);
+                    board[i][j].setText("");
+                    board[i][j].setBackground(getResources().getDrawable(R.drawable.mine_1,null));
+                    //board[i][j].setTextColor(Color.BLACK);
                 }
             }
         }
@@ -530,7 +531,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 }
-                firstClick=false;
                 int num=1;
                 int mines=0;
                 Random random=new Random();
@@ -546,6 +546,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 updateNeighbours();
             }
+            firstClick=false;
             int x=0,y=0;
             for(int i=0;i<SIZE;i++)
             {
