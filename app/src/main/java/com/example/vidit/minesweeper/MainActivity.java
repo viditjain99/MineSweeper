@@ -507,6 +507,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             MSButton button=(MSButton) view;
             if(firstClick==true && button.status()==true)
             {
+                for(int i=0;i<SIZE;i++)
+                {
+                    for(int j=0;j<SIZE;j++)
+                    {
+                        board[i][j].setZero();
+                    }
+                }
                 int x_coord=0,y_coord=0;
                 if(button.status()==true)
                 {

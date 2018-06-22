@@ -35,6 +35,10 @@ public class MSButton extends AppCompatButton
             isAMine=false;
         }
     }
+    public void setZero()
+    {
+        nearbyMines=0;
+    }
     public void showButton()
     {
         setText(String.valueOf(nearbyMines));
@@ -76,7 +80,7 @@ public class MSButton extends AppCompatButton
     {
         setClickable(false);
         flag=true;
-        //setText("F");
+        setText("F");
         //setBackground("@mipmap/ic_action_flag");
         setTextColor(Color.RED);
     }
