@@ -39,14 +39,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(id==R.id.Easy)
         {
             SIZE=8;
+            numberOfMines=10;
         }
         else if(id==R.id.Medium)
         {
             SIZE=9;
+            numberOfMines=13;
         }
         else if(id==R.id.Hard)
         {
             SIZE=10;
+            numberOfMines=18;
         }
         rootLayout=findViewById(R.id.rootLayout);
         setupBoard();
