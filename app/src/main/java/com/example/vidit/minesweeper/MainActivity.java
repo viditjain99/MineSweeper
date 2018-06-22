@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public int gameStatus=-1;
     public int incomplete=1;
     public int complete=2;
-    public int checked=0;
+    public int checked;
     public int r;
     public ArrayList<LinearLayout> rows;
     public boolean firstClick=true;
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         rows = new ArrayList<>();
         r=5;
+        checked=0;
         gameStatus=incomplete;
         rootLayout.removeAllViews();
         board=new MSButton[SIZE][SIZE];
