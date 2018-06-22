@@ -505,7 +505,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(gameStatus==incomplete)
         {
             MSButton button=(MSButton) view;
-            if(firstClick==true)
+            if(firstClick==true && button.status()==true)
             {
                 int x_coord=0,y_coord=0;
                 if(button.status()==true)
