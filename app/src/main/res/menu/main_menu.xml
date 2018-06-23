@@ -8,11 +8,11 @@
         android:id="@+id/difficulty">
         <menu>
             <group android:id="@+id/submenu">
-                <item android:title="Easy"
+                <item android:title="Beginner(8x8)"
                     android:id="@+id/easy" />
-                <item android:title="Medium"
+                <item android:title="Intermediate(9x9)"
                     android:id="@+id/medium" />
-                <item android:title="Hard"
+                <item android:title="Pr0(10x10)"
                     android:id="@+id/hard" />
             </group>
         </menu>

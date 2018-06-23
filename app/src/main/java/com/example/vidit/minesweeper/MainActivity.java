@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -100,10 +101,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         flagTextView.setGravity(Gravity.CENTER);
         infoLayout.addView(nameTextView);
         infoLayout.addView(flagTextView);
-        nameTextView.setText("Player Name: "+name);
+        String n="Player Name: "+"<b>"+name+"</b>";
+        nameTextView.setText(Html.fromHtml(n));
         nameTextView.setTextSize(20);
         nameTextView.setTextColor(Color.parseColor("#595B5B"));
-        flagTextView.setText("Flags: "+flags);
+        String f="Flags: "+"<b>"+flags+"</b>";
+        flagTextView.setText(Html.fromHtml(f));
         flagTextView.setTextColor(Color.parseColor("#595B5B"));
         flagTextView.setTextSize(20);
         for(int i=0;i<SIZE;i++)
@@ -494,6 +497,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id=item.getItemId();
         if(id==R.id.resetItem)
         {
+            flags=numberOfMines;
             setupBoard();
             easy=true;
             setupMines();
@@ -504,6 +508,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             SIZE=8;
             numberOfMines=10;
+            flags=numberOfMines;
             setupBoard();
             easy=true;
             medium=false;
@@ -516,11 +521,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             SIZE=9;
             numberOfMines=13;
+            flags=numberOfMines;
             setupBoard();
             easy=false;
             medium=true;
             hard=false;
             firstClick=true;
+            flags=numberOfMines;
             setupMines();
             updateNeighbours();
         }
@@ -528,9 +535,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             SIZE=10;
             numberOfMines=18;
+            flags=numberOfMines;
             setupBoard();
             easy=false;
             medium=false;
+            flags=numberOfMines;
             hard=true;
             firstClick=true;
             setupMines();
@@ -621,13 +630,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             button1.unsetFlag();
             flags++;
-            flagTextView.setText("Flags: "+String.valueOf(flags));
+            String f="Flags: "+"<b>"+flags+"</b>";
+            flagTextView.setText(Html.fromHtml(f));
         }
         else
         {
             button1.setFlag();
             flags--;
-            flagTextView.setText("Flags: "+String.valueOf(flags));
+            String f="Flags: "+"<b>"+flags+"</b>";
+            flagTextView.setText(Html.fromHtml(f));
         }
         return true;
     }

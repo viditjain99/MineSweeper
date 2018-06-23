@@ -18,43 +18,47 @@
         android:text="Choose Difficulty"
         android:textColor="#000000"
         android:gravity="center"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:layout_marginBottom="15dp"/>
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/radioGrp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
             <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Easy"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="Beginner (8x8)"
                 android:textSize="20dp"
                 android:checked="false"
                 android:buttonTint="#86C9AA"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:id="@+id/Easy"
-                android:layout_marginLeft="25dp"/>
+                android:layout_marginLeft="100dp"/>
 
             <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="Intermediate (9x9)"
+                android:textSize="20dp"
+                android:checked="false"
+                android:buttonTint="#86C9AA"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:id="@+id/Medium"
+                android:layout_marginLeft="100dp"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="Pr0 (10x10)"
                 android:textSize="20dp"
                 android:checked="false"
                 android:buttonTint="#86C9AA"
                 android:layout_weight="1"
-                android:id="@+id/Medium" />
-
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Hard"
-                android:textSize="20dp"
-                android:checked="false"
-                android:buttonTint="#86C9AA"
-                android:layout_weight="1"
-                android:id="@+id/Hard" />
+                android:id="@+id/Hard"
+                android:layout_marginLeft="100dp"/>
     </RadioGroup>
 
     <Button
@@ -62,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         android:backgroundTint="#494949"
         android:textColor="#FFFFFF"
         android:text="Start Game" />
