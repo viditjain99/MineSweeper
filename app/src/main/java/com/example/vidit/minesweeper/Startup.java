@@ -1,6 +1,7 @@
 package com.example.vidit.minesweeper;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
@@ -26,6 +27,7 @@ public class Startup extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#494949")));
         button=findViewById(R.id.start);
         editText=findViewById(R.id.nameEditText);

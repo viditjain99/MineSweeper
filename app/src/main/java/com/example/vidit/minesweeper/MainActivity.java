@@ -2,9 +2,12 @@ package com.example.vidit.minesweeper;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.Gravity;
@@ -12,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Chronometer;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableRow;
@@ -25,13 +29,17 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,View.OnLongClickListener
 {
     LinearLayout rootLayout;
-    TextView nameTextView,flagTextView;
+    TextView nameTextView,flagTextView,timeTextView;
     public int SIZE=8;
     public int numberOfMines=10;
     public int gameStatus=-1;
     public int incomplete=1;
     public int complete=2;
     public int checked;
+    public long startTime;
+    public long timeInMillies;
+    public long finalTime;
+    public long timeSwap;
     public int r;
     public ArrayList<LinearLayout> rows;
     public boolean firstClick=true;
@@ -45,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         intent=getIntent();
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#494949")));
         name=intent.getStringExtra(Startup.NAME_KEY);
@@ -81,6 +90,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checked=0;
         gameStatus=incomplete;
         rootLayout.removeAllViews();
+        startTime=0L;
+        finalTime=0L;
+        timeSwap=0L;
+        timeInMillies=0L;
         board=new MSButton[SIZE][SIZE];
         easy=false;
         medium=false;
@@ -93,13 +106,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rootLayout.addView(infoLayout);
         nameTextView=new TextView(this);
         flagTextView=new TextView(this);
+        timeTextView=new TextView(this);
         TableRow.LayoutParams params1=new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT,1f);
         nameTextView.setLayoutParams(params1);
         nameTextView.setGravity(Gravity.CENTER);
         TableRow.LayoutParams params2=new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT,1f);
         flagTextView.setLayoutParams(params2);
         flagTextView.setGravity(Gravity.CENTER);
+        TableRow.LayoutParams params3=new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT,1f);
+        timeTextView.setLayoutParams(params3);
+        timeTextView.setGravity(Gravity.CENTER);
         infoLayout.addView(nameTextView);
+        infoLayout.addView(timeTextView);
         infoLayout.addView(flagTextView);
         String n="Player Name: "+"<b>"+name+"</b>";
         nameTextView.setText(Html.fromHtml(n));
@@ -109,6 +127,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         flagTextView.setText(Html.fromHtml(f));
         flagTextView.setTextColor(Color.parseColor("#595B5B"));
         flagTextView.setTextSize(20);
+        String t="<b>"+"0"+"</b>";
+        timeTextView.setText(Html.fromHtml(t));
+        timeTextView.setTextColor(Color.parseColor("#595B5B"));
+        timeTextView.setTextSize(20);
         for(int i=0;i<SIZE;i++)
         {
             LinearLayout linearLayout=new LinearLayout(this);
@@ -399,6 +421,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             if (button.status()==true)
             {
+                //timeSwap+=timeInMillies;
+                //myHandler.removeCallbacks(updateTimerMethod);
                 Toast.makeText(this, "Game Over!!", Toast.LENGTH_SHORT).show();
                 showAllMines();
                 button.revealed=true;
@@ -593,6 +617,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 updateNeighbours();
             }
+            /*if(firstClick==true)
+            {
+                //startTime= SystemClock.uptimeMillis();
+                //myHandler.postDelayed(updateTimerMethod,0);
+            }*/
             firstClick=false;
             int x=0,y=0;
             for(int i=0;i<SIZE;i++)
@@ -642,4 +671,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return true;
     }
+    /*public Runnable updateTimerMethod=new Runnable() {
+        @Override
+        public void run() {
+            timeInMillies=SystemClock.uptimeMillis()-startTime;
+            finalTime=timeSwap+timeInMillies;
+            int seconds=(int) (finalTime/1000);
+            String t="<b>"+seconds+"</b>";
+            timeTextView.setText(Html.fromHtml(t));
+            myHandler.postDelayed(this,0);
+        }
+    };*/
 }
